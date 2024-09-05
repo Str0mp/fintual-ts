@@ -7,18 +7,28 @@ export class Portfolio {
     this.stocks = stocks;
   }
 
-
   public profit(startDate: string, endDate: string): number {
-    let totalProfit = 0;
-
-    this.stocks.forEach((stock) => {
+    return this.stocks.reduce((totalProfit, stock) => {
+      console.log("🚀 ~ Portfolio ~ returnthis.stocks.reduce ~ stock:", stock);
       const startPrice = stock.price(startDate);
+      console.log(
+        "🚀 ~ Portfolio ~ returnthis.stocks.reduce ~ startPrice:",
+        startPrice
+      );
       const endPrice = stock.price(endDate);
+      console.log(
+        "🚀 ~ Portfolio ~ returnthis.stocks.reduce ~ endPrice:",
+        endPrice
+      );
 
-      totalProfit += endPrice - startPrice;
-    });
+      if (startPrice === undefined || endPrice === undefined) {
+        throw new Error(
+          `Precio no encontrado para las fechas dadas: ${startDate} o ${endDate}`
+        );
+      }
 
-    return totalProfit;
+      return totalProfit + (endPrice - startPrice);
+    }, 0);
   }
 
   //todo: validar si es realmente lo que se solicita respecto a la formula
