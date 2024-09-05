@@ -1,0 +1,20 @@
+# Node modules
+node_modules/
+
+# Dist folder (compiled output)
+dist/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment variables
+.env
+
+# TypeScript
+*.tsbuildinfo
+
+# IDEs
+.vscode/
+.idea/
